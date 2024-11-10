@@ -1,70 +1,77 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Shortest Path Finder with Dijkstra Algorithm
 
-## Available Scripts
+This project demonstrates the visualization of a shortest path algorithm using Dijkstra's Algorithm. The user can select a start and end city from a randomly generated network of cities, and the application will calculate and visualize the shortest path between them.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Random City Network**: A network of cities connected by roads with random weights representing distances.
+- **Interactive Map**: Users can select their starting and ending cities from a dropdown menu.
+- **Dijkstra's Algorithm**: The shortest path is calculated using Dijkstra's algorithm and visualized on an interactive map.
+- **City and Road Visualization**: Cities are displayed as circles, and roads (edges) are represented by lines connecting the cities.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Screenshot
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Shortest Path Finder Screenshot](./screenshot.png)
 
-### `npm test`
+> The screenshot above shows the visualization of the shortest path between two cities.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+1. **Clone the repository**:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   git clone https://github.com/your-username/shortest-path-finder.git
+   cd shortest-path-finder
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install dependencies**:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   Make sure you have Node.js and npm installed. Then, run:
 
-### `npm run eject`
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Start the development server**:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   After the dependencies are installed, you can start the app:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   This will open the application in your browser. You can interact with the map, select a start and end city, and see the shortest path calculated and visualized.
 
-## Learn More
+## How It Works
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Graph Generation**:
+   - A random graph of cities is created, with random distances (weights) between cities.
+   - The cities are placed on an SVG canvas, and lines represent roads between them.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. **Shortest Path Calculation**:
+   - The Dijkstra algorithm is used to find the shortest path between two cities.
+   - Once the user selects the start and end cities, the algorithm computes the path, and the result is displayed by highlighting the path in red.
 
-### Code Splitting
+3. **Interactive Interface**:
+   - The user can select different cities for the start and end points using dropdown menus.
+   - Clicking the "Find Path" button triggers the path calculation and updates the visualization.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Technologies Used
 
-### Analyzing the Bundle Size
+- **React**: For building the user interface.
+- **D3.js**: For visualizing the graph and paths on the canvas.
+- **Dijkstra's Algorithm**: For calculating the shortest path between two cities.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+1. Fork this repository.
+2. Create a new branch (`git checkout -b feature/your-feature`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add new feature'`).
+5. Push to the branch (`git push origin feature/your-feature`).
+6. Create a new pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## License
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

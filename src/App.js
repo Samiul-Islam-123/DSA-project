@@ -2,26 +2,40 @@ import React, { useState } from 'react';
 import CityMap from './components/CityMap';
 import dijkstra from './utils/dijkstra';
 
-const citiesGraph = {
-  "City A": { "City B": Math.floor(Math.random() * 20) + 1, "City C": Math.floor(Math.random() * 20) + 1, "City E": Math.floor(Math.random() * 20) + 1, "City F": Math.floor(Math.random() * 20) + 1 },
-  "City B": { "City A": Math.floor(Math.random() * 20) + 1, "City D": Math.floor(Math.random() * 20) + 1, "City C": Math.floor(Math.random() * 20) + 1, "City E": Math.floor(Math.random() * 20) + 1 },
-  "City C": { "City A": Math.floor(Math.random() * 20) + 1, "City B": Math.floor(Math.random() * 20) + 1, "City D": Math.floor(Math.random() * 20) + 1, "City F": Math.floor(Math.random() * 20) + 1 },
-  "City D": { "City B": Math.floor(Math.random() * 20) + 1, "City C": Math.floor(Math.random() * 20) + 1, "City E": Math.floor(Math.random() * 20) + 1 },
-  "City E": { "City A": Math.floor(Math.random() * 20) + 1, "City B": Math.floor(Math.random() * 20) + 1, "City D": Math.floor(Math.random() * 20) + 1, "City F": Math.floor(Math.random() * 20) + 1 },
-  "City F": { "City A": Math.floor(Math.random() * 20) + 1, "City C": Math.floor(Math.random() * 20) + 1, "City E": Math.floor(Math.random() * 20) + 1 },
-  "City G": { "City H": Math.floor(Math.random() * 20) + 1, "City I": Math.floor(Math.random() * 20) + 1 },
-  "City H": { "City G": Math.floor(Math.random() * 20) + 1, "City I": Math.floor(Math.random() * 20) + 1, "City J": Math.floor(Math.random() * 20) + 1 },
-  "City I": { "City G": Math.floor(Math.random() * 20) + 1, "City H": Math.floor(Math.random() * 20) + 1, "City J": Math.floor(Math.random() * 20) + 1 },
-  "City J": { "City H": Math.floor(Math.random() * 20) + 1, "City I": Math.floor(Math.random() * 20) + 1 },
-  "City K": { "City L": Math.floor(Math.random() * 20) + 1, "City M": Math.floor(Math.random() * 20) + 1 },
-  "City L": { "City K": Math.floor(Math.random() * 20) + 1, "City M": Math.floor(Math.random() * 20) + 1 },
-  "City M": { "City K": Math.floor(Math.random() * 20) + 1, "City L": Math.floor(Math.random() * 20) + 1 }
+// Function to generate a random network
+const generateRandomGraph = () => {
+  const cities = [
+    "City A", "City B", "City C", "City D", "City E", 
+    "City F", "City G", "City H", "City I", "City J", 
+    "City K", "City L", "City M"
+  ];
+
+  const graph = {};
+
+  cities.forEach(city => {
+    graph[city] = {};
+  });
+
+  // Randomly generate edges and weights between cities
+  cities.forEach(city => {
+    cities.forEach(neighbor => {
+      if (city !== neighbor && !graph[neighbor][city]) {  // Avoid adding a reverse edge or self-loop
+        const weight = Math.floor(Math.random() * 10) + 1;  // Random weight between 1 and 20
+        graph[city][neighbor] = weight;
+      }
+    });
+  });
+
+  return graph;
 };
 
-
-
 const App = () => {
+  // Initialize the graph with random connections
+  const citiesGraph = generateRandomGraph();
+  
   const [shortestPath, setShortestPath] = useState(null);
+  const [startCity, setStartCity] = useState("City A");  // Default start city
+  const [endCity, setEndCity] = useState("City L");  // Default end city
 
   const findShortestPath = (start, end) => {
     const { distances, previous } = dijkstra(citiesGraph, start);
@@ -39,7 +53,40 @@ const App = () => {
   return (
     <div>
       <h1>Shortest Path Finder</h1>
-      <button onClick={() => findShortestPath('City A', 'City D')}>Find Path from City A to City D</button>
+      
+      {/* Dropdown for selecting start city */}
+      <label htmlFor="start-city">Select Start City: </label>
+      <select
+        id="start-city"
+        value={startCity}
+        onChange={(e) => setStartCity(e.target.value)}
+      >
+        {Object.keys(citiesGraph).map((city) => (
+          <option key={city} value={city}>
+            {city}
+          </option>
+        ))}
+      </select>
+
+      {/* Dropdown for selecting end city */}
+      <label htmlFor="end-city">Select End City: </label>
+      <select
+        id="end-city"
+        value={endCity}
+        onChange={(e) => setEndCity(e.target.value)}
+      >
+        {Object.keys(citiesGraph).map((city) => (
+          <option key={city} value={city}>
+            {city}
+          </option>
+        ))}
+      </select>
+
+      <button onClick={() => findShortestPath(startCity, endCity)}>
+        Find Path
+      </button>
+      
+      {/* Render the city map and shortest path visualization */}
       <CityMap graph={citiesGraph} shortestPath={shortestPath} />
     </div>
   );

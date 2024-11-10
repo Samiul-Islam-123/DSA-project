@@ -4,23 +4,29 @@ import * as d3 from 'd3';
 const CityMap = ({ graph, shortestPath }) => {
   const svgRef = useRef();
   const [cityPositions, setCityPositions] = useState({});
+  const [initialized, setInitialized] = useState(false);  // Track initialization
 
   useEffect(() => {
+    // Only run the position calculation once (when the graph changes and has not been initialized)
+    if (initialized) return;  // Skip recalculating if already initialized
+
     // Sample city coordinates (this can be customized)
     const cities = Object.keys(graph);
     const positions = cities.reduce((acc, city, index) => {
-      acc[city] = { x: 100 + index * 200, y: 100 + Math.random() * 200 };
+      // Adjust the horizontal space (width) to be more spacious
+      acc[city] = { x: 150 + (index % 6) * 200, y: 100 + Math.floor(index / 6) * 150 + Math.random() * 200 };
       return acc;
     }, {});
     setCityPositions(positions);
-  }, [graph]);  // Dependency on graph, so it runs only when graph changes.
+    setInitialized(true);  // Mark as initialized
+  }, [graph, initialized]);  // Dependency on graph, so it runs only when graph changes.
 
   useEffect(() => {
     if (Object.keys(cityPositions).length === 0) return; // Ensure positions are available
 
     const svg = d3.select(svgRef.current)
-      .attr('width', 1200)
-      .attr('height', 600)
+      .attr('width', 1800)  // Increased width for more space
+      .attr('height', 800)  // Adjusted height for a larger view
       .style('background-color', '#f4f4f4');
 
     // Draw roads (edges)
@@ -70,7 +76,7 @@ const CityMap = ({ graph, shortestPath }) => {
       for (let i = 0; i < shortestPath.length - 1; i++) {
         const cityPos = cityPositions[shortestPath[i]];
         const nextCityPos = cityPositions[shortestPath[i + 1]];
-        
+
         // Ensure positions are valid before drawing path
         if (cityPos && nextCityPos) {
           svg.append('line')
