@@ -21,8 +21,8 @@ This project demonstrates the visualization of a shortest path algorithm using D
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/your-username/shortest-path-finder.git
-   cd shortest-path-finder
+   git clone https://github.com/Samiul-Islam-123/DSA-project.git
+   cd DSA-project
    ```
 
 2. **Install dependencies**:
@@ -72,6 +72,3 @@ This project demonstrates the visualization of a shortest path algorithm using D
 5. Push to the branch (`git push origin feature/your-feature`).
 6. Create a new pull request.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
