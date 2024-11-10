@@ -16,6 +16,10 @@ This project demonstrates the visualization of a shortest path algorithm using D
 
 > The screenshot above shows the visualization of the shortest path between two cities.
 
+## View it live
+
+You can view the live demo of the application at: [Live Demo](https://dsa-project-omega.vercel.app/)
+
 ## Installation
 
 1. **Clone the repository**:
