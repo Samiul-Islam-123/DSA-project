@@ -67,6 +67,10 @@ You can view the live demo of the application at: [Live Demo](https://dsa-projec
 - **D3.js**: For visualizing the graph and paths on the canvas.
 - **Dijkstra's Algorithm**: For calculating the shortest path between two cities.
 
+## Team Members
+
+1. Manisha Debnath(UG/02/BTCSE/2023/030)
+
 ## Contributing
 
 1. Fork this repository.
