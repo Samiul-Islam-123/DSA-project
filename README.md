@@ -70,7 +70,7 @@ You can view the live demo of the application at: [Live Demo](https://dsa-projec
 ## Team Members
 
 1. Manisha Debnath(UG/02/BTCSE/2023/030)
-
+2. Arijit De(UG/02/BTCSE/2023/038)
 ## Contributing
 
 1. Fork this repository.
