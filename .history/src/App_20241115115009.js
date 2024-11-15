@@ -275,7 +275,7 @@ const App = () => {
           </p>
           <div className="space-y-1">
             {pathDetails.map((segment, index) => (
-              <div key={index} className="text-white-600">
+              <div key={index} className="text-gray-600">
                 {segment.from} → {segment.to}: {segment.weight} units
               </div>
             ))}
@@ -289,7 +289,7 @@ const App = () => {
         pathDetails={pathDetails}
       />
       <footer className="mt-6 text-center text-gray-500 text-sm">
-      Made by Shovon Samiul Manisha Arijit Satyajit
+      Made by Shovon Samuel Manisha Arijit Satyajit
     </footer>
     </div>
   );

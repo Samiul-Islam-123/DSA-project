@@ -289,7 +289,7 @@ const App = () => {
         pathDetails={pathDetails}
       />
       <footer className="mt-6 text-center text-gray-500 text-sm">
-      Made by Shovon Samiul Manisha Arijit Satyajit
+      Made by Shovon Samuel Manisha Arijit Satyajit
     </footer>
     </div>
   );
