@@ -39,7 +39,7 @@ const CityMap = ({ graph, shortestPath, pathDetails }) => {
   };
 
   return (
-    <div className="w-full h-[600px] w-[800px] ml-24 border rounded-lg bg-black shadow-sm overflow-hidden">
+    <div className="w-full h-[px] border rounded-lg bg-black shadow-sm overflow-hidden">
       <svg width="800" height="600" className="w-full h-full">
         {/* Draw edges */}
         {Object.keys(cityPositions).map(city1 => 
@@ -275,7 +275,7 @@ const App = () => {
           </p>
           <div className="space-y-1">
             {pathDetails.map((segment, index) => (
-              <div key={index} className="text-white-600">
+              <div key={index} className="text-gray-600">
                 {segment.from} → {segment.to}: {segment.weight} units
               </div>
             ))}
@@ -289,7 +289,7 @@ const App = () => {
         pathDetails={pathDetails}
       />
       <footer className="mt-6 text-center text-gray-500 text-sm">
-      Made by Shovon Samiul Manisha Arijit Satyajit
+      Made by Shovon Samuel Manisha Arijit Satyajit
     </footer>
     </div>
   );
